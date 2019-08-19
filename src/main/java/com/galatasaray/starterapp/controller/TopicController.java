@@ -3,10 +3,8 @@ package com.galatasaray.starterapp.controller;
 import com.galatasaray.starterapp.model.Topic;
 import com.galatasaray.starterapp.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/topic")
@@ -22,5 +20,10 @@ public class TopicController {
     @RequestMapping(path = "/{id}",method = RequestMethod.GET)
     public Topic getTopicById(@PathVariable("id") Long id){
         return topicService.findById(id);
+    }
+    @RequestMapping(path = "/save",method = RequestMethod.POST)
+    public @ResponseBody ResponseEntity saveTopic(@RequestBody Topic topic){
+        topicService.save(topic);
+       return ResponseEntity.ok().body(topic);
     }
 }
