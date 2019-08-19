@@ -21,6 +21,7 @@ public class TopicController {
     public Topic getTopicById(@PathVariable("id") Long id){
         return topicService.findById(id);
     }
+
     @RequestMapping(path = "/save",method = RequestMethod.POST)
     public @ResponseBody ResponseEntity saveTopic(@RequestBody Topic topic){
         topicService.save(topic);
