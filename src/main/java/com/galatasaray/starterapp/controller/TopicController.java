@@ -27,4 +27,9 @@ public class TopicController {
         topicService.save(topic);
        return ResponseEntity.ok().body(topic);
     }
+
+    @RequestMapping(path = "/update/{id}")
+    public @ResponseBody ResponseEntity updateTopic(@RequestBody Topic topic,@PathVariable("id") Long id){
+        return ResponseEntity.ok().body(topicService.update(topic));
+    }
 }

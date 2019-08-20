@@ -25,4 +25,14 @@ public class TopicServiceImpl implements TopicService {
     public void save(Topic topic) {
         topicRepository.save(topic);
     }
+
+    @Override
+    public Topic update(Topic topic) {
+        return topicRepository.save(topic);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        topicRepository.deleteById(id);
+    }
 }
